@@ -366,6 +366,7 @@ export default class PaymentRequest {
     paymentData: string,
     shippingAddress: Object,
     payerEmail: string,
+    payerPhone: string,
     paymentToken?: string,
     paymentMethod: Object
   }) {
@@ -385,7 +386,7 @@ export default class PaymentRequest {
       details: this._getPlatformDetails(details),
       shippingOption: IS_IOS ? this._shippingOption : null,
       payerName: this._options.requestPayerName ? this._shippingAddress.recipient : null,
-      payerPhone: this._options.requestPayerPhone ? this._shippingAddress.phone : null,
+      payerPhone: this._options.requestPayerPhone ? details.payerPhone : null,
       payerEmail: IS_ANDROID && this._options.requestPayerEmail
         ? details.payerEmail
         : null
